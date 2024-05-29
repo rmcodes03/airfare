@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Fare Prediction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-title {
+            font-weight: bold;
+            color: #333;
+        }
+        .form-control {
+            border-radius: 20px;
+            border: 1px solid #ced4da;
+        }
+        .btn-secondary {
+            border-radius: 20px;
+            background-color: #007bff;
+            border: none;
+        }
+        .btn-secondary:hover {
+            background-color: #0056b3;
+        }
+        .predicted-text {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">AirFare - Flight Fare Prediction</h5>
+                        <form action="\predict" method="post">
+                            <div class="form-group">
+                                <label for="departure">Departure Date and Time</label>
+                                <input type="datetime-local" class="form-control" id="departure" name="Dep_Time" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="arrival">Arrival Date and Time</label>
+                                <input type="datetime-local" class="form-control" id="arrival" name="Arrival_Time" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="source">Source</label>
+                                <select class="form-control" id="source" name="Source" required>
+                                    <option value="Delhi">Delhi</option>
+                                    <option value="Kolkata">Kolkata</option>
+                                    <option value="Mumbai">Mumbai</option>
+                                    <option value="Chennai">Chennai</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="destination">Destination</label>
+                                <select class="form-control" id="destination" name="Destination" required>
+                                    <option value="Cochin">Cochin</option>
+                                    <option value="Delhi">Delhi</option>
+                                    <option value="New Delhi">New Delhi</option>
+                                    <option value="Hyderabad">Hyderabad</option>
+                                    <option value="Kolkata">Kolkata</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="stops">Number of Stops</label>
+                                <select class="form-control" id="stops" name="stops" required>
+                                    <option value="0">Non-Stop</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="airline">Preferred Airline</label>
+                                <select class="form-control" id="airline" name="airline" required>
+                                    <option value="IndiGo">IndiGo</option>
+                                    <option value="Air India">Air India</option>
+                                    <option value="Multiple carriers">Multiple carriers</option>
+                                    <option value="SpiceJet">SpiceJet</option>
+                                    <option value="Vistara">Vistara</option>
+                                    <option value="Air Asia">Air Asia</option>
+                                    <option value="GoAir">GoFirst</option>
+                                    <option value="Multiple carriers Premium economy">Multiple carriers Premium economy</option>
+                                    <option value="Vistara Premium economy">Vistara Premium economy</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-secondary btn-block">Predict Price</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="predicted-text text-center">
+                    <h3>{{ prediction_text }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
